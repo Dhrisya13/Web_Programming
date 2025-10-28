@@ -1,0 +1,31 @@
+<html>
+<body bgcolor="#D8E5F7">
+<h1 align="center">STRING AND MATH FUNCTIONS<h1>
+<h2>string functions</h2>
+<script>
+var txt = prompt("enter a string");
+document.write("original string is:"+txt+"<br>");
+document.write(" string length is:"+txt.length+"<br>");
+document.write(" string converted to uppercase:"+txt.toUpperCase()+"<br>");
+document.write(" string converted to lowercase:"+txt.toLowerCase()+"<br>");
+document.write(" character at index 1:"+txt.charAt(1)+"<br>");
+var s1="ing";
+document.write("adding ing with our string="+txt.concat(s1)+"<br>");
+var s3="javascript from java point indexof"; 
+var n=s3.lastIndexOf("indexof");
+document.write(s3+"<br>");
+document.write(" the last index position of (indexof) ="+n+"<br>");
+document.write(" sliced(0 to 2) string is:"+txt.slice(0,2)+"<br>");
+</script>
+<h2>math functions</h2>
+<script>
+var num=parseFloat(prompt("enter a number:"));
+document.write("the square root of number:"+Math.round((Math.sqrt(num)))+"<br>");
+document.write("the square root of number in floor value:"+Math.floor((Math.sqrt(num)))+"<br>");
+document.write("the square root of number in ceil:"+Math.ceil((Math.sqrt(num)))+"<br>");
+document.write("the absolute value of -52="+(Math.abs(-52))+"<br>");
+document.write("5 to the power of 2="+ (Math.pow(5,2))+"<br>");
+document.write("the number between 0 to 1 ="+(Math.random())+"<br>");
+</script>
+</body>
+</html>
