@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mouse over event</title>
+  <script>
+     function showNewContent()
+     {
+     document.getElementById("myImage").src="emo.jpeg";
+     document.getElementById("myText").innerHTML="your hovered over content!";
+     }
+     function showOriginalContent()
+     {
+     document.getElementById("myImage").src="emo2.jpeg";
+     document.getElementById("myText").innerHTML="hovered over content!";
+     }
+  </script>
+</head> 
+<body style="background-color: lavender; text-align:center;">
+   <h2>Mouse Over Event</h2>
+   <p id="myText">hovered image!!</p>
+   <img id="myImage" src="emo2.jpeg" width="300" height="400" onmouseover="showNewContent()" onmouseout="showOriginalContent()">
+</body>
+</html>
