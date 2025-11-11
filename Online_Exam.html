@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<body bgcolor="sky blue">
+<h2>ONLINE EXAM</h2>
+
+<h3>Time Left: <span id="timer">01:00</span></h3>
+
+<form id="examForm">
+<p>Register Number:
+<input type="text" id="reg" required><br></p>
+
+<h3>Q1.JavaScript is a ______ language.</h3>
+      <input type="radio" name="q1" value="Programming">Programming<br>
+      <input type="radio" name="q1" value="Scripting">Scripting<br>
+      <input type="radio" name="q1" value="Markup">Markup<br>
+      
+      <h3>Q2.Who developed JavaScript?</h3>
+      <input type="radio" name="q2" value="James Gosling">James Gosling<br>
+      <input type="radio" name="q2" value="Dennis Ritchie">Dennis Ritchie<br>
+      <input type="radio" name="q2" value="Brendan Eich">Brendan Eich<br>
+      
+      <h3>Q3.What is the file extension for JavaScript files?</h3>
+      <input type="radio" name="q3" value=".java">.java<br>
+      <input type="radio" name="q3" value=".js">.js<br>
+      <input type="radio" name="q3" value=".jv">.jv<br>
+      
+      <h3>Q4.JavaScript was created in which year?</h3>
+      <input type="radio" name="q4" value="1990">1990<br>
+      <input type="radio" name="q4" value="1995">1995<br>
+      <input type="radio" name="q4" value="1996">1996<br>
+      
+      <h3>Q5.JavaScript is ______ sensitive.</h3>
+      <input type="radio" name="q5" value="space">space<br>
+      <input type="radio" name="q5" value="case">case<br>
+      <input type="radio" name="q5" value="none">none<br>
+      
+      <h3>Q6.Which keyword is used to declare a variable in JavaScript?</h3>
+      <input type="radio" name="q6" value="let">let<br>
+      <input type="radio" name="q6" value="int">int<br>
+      <input type="radio" name="q6" value="declare">declare<br>
+      
+      <h3>Q7.Which of the following is NOT a primitive data type in JavaScript?</h3>
+      <input type="radio" name="q7" value="number">number<br>
+      <input type="radio" name="q7" value="string">string<br>
+      <input type="radio" name="q7" value="object">object<br>
+      
+      <h3>Q8.Which keyword is used to declare a constant?</h3>
+      <input type="radio" name="q8" value="static">static<br>
+      <input type="radio" name="q8" value="const">const<br>
+      <input type="radio" name="q8" value="final">final<br>
+      
+      <h3>Q9.What will typeof null return?</h3>
+      <input type="radio" name="q9" value="object">object<br>
+      <input type="radio" name="q9" value="null">null<br>
+      <input type="radio" name="q9" value="number">number<br>
+      
+      <h3>Q10.What will typeof "Hello" return?</h3>
+      <input type="radio" name="q10" value="string">string<br>
+      <input type="radio" name="q10" value="char">char<br>
+      <input type="radio" name="q10" value="object">object<br>
+
+<button onclick="submitExam(event)">Submit</button>
+<button type="reset">Reset</button>
+</form>
+
+<h3 id="result"></h3>
+
+<script>
+function submitExam(event) {
+  event.preventDefault();
+  let score = 0;
+  let regNum = document.getElementById("reg").value;
+  if (regNum === "") {
+    alert("Please enter your register number");
+    return;
+  }
+
+  if (document.querySelector('input[name="q1"]:checked')?.value === "Scripting") score++;
+  if (document.querySelector('input[name="q2"]:checked')?.value === "Brendan Eich") score++;
+  if (document.querySelector('input[name="q3"]:checked')?.value === ".js") score++;
+  if (document.querySelector('input[name="q4"]:checked')?.value === "1995") score++;
+  if (document.querySelector('input[name="q5"]:checked')?.value === "case") score++;
+  if (document.querySelector('input[name="q6"]:checked')?.value === "let") score++;
+  if (document.querySelector('input[name="q7"]:checked')?.value === "object") score++;
+  if (document.querySelector('input[name="q8"]:checked')?.value === "const") score++;
+  if (document.querySelector('input[name="q9"]:checked')?.value === "object") score++;
+  if (document.querySelector('input[name="q10"]:checked')?.value === "string") score++;
+
+  document.getElementById("result").innerHTML = "Your Score: " + score + "/10";
+  alert('your score is: ' +score+ '/10')
+  location.reload();
+  document.getElementById("examForm").reset();
+}
+let timeLeft = 60;
+let timer = setInterval(function() {
+  let minutes = Math.floor(timeLeft / 60);
+  let seconds = timeLeft % 60;
+  document.getElementById("timer").textContent =
+    (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+  timeLeft--;
+
+  if (timeLeft < 0) {
+    clearInterval(timer);
+    alert("Time's up! Submitting your exam.");
+    submitExam(new Event('manual'));
+  }
+}, 1000);
+function resetExam() {
+  clearInterval(timer);
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("examForm").reset();
+  startTimer();
+}
+
+</script>
+</body>
+</html>
+
